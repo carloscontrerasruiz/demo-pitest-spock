@@ -13,14 +13,15 @@ import java.util.Map;
 @Component
 public class TheFactory {
 
-    @Autowired
     private RickMortyRepo rickMortyRepo;
-
-    @Autowired
     private PokemonRepo pokemonRepo;
-
-    @Autowired
     private RepositoriesProperties repositoriesProperties;
+
+    public TheFactory(RickMortyRepo rickMortyRepo, PokemonRepo pokemonRepo, RepositoriesProperties repositoriesProperties) {
+        this.rickMortyRepo = rickMortyRepo;
+        this.pokemonRepo = pokemonRepo;
+        this.repositoriesProperties = repositoriesProperties;
+    }
 
     public CharacterRepository getRightRepo(String identifier) {
         Map<String, ShowsProperties> shows = repositoriesProperties.getShows();

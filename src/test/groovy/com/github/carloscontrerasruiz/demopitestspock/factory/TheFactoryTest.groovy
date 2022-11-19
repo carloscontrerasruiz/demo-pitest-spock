@@ -4,25 +4,15 @@ import com.github.carloscontrerasruiz.demopitestspock.properties.RepositoriesPro
 import com.github.carloscontrerasruiz.demopitestspock.properties.ShowsProperties
 import com.github.carloscontrerasruiz.demopitestspock.properties.repository.pokemon.PokemonRepo
 import com.github.carloscontrerasruiz.demopitestspock.properties.repository.rick_morty.RickMortyRepo
-import org.spockframework.spring.SpringBean
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.context.SpringBootTest
 import spock.lang.Specification
 
-@SpringBootTest
 class TheFactoryTest extends Specification {
 
-    @SpringBean
     RickMortyRepo rickMortyMock = Mock()
-
-    @SpringBean
     PokemonRepo pokemonMock = Mock()
-
-    @SpringBean
     RepositoriesProperties repositoriesPropertiesMock = Mock()
 
-    @Autowired
-    TheFactory factory
+    TheFactory factory = new TheFactory(rickMortyMock, pokemonMock, repositoriesPropertiesMock)
 
     def "Get Right Repo | Rick Y Morty"() {
         given:
